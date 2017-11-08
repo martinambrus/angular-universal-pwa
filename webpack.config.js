@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ScriptExtPlugin = require('script-ext-html-webpack-plugin');
 
 module.exports = function () {
     return {
@@ -8,7 +9,15 @@ module.exports = function () {
             path: __dirname + '/dist',
             filename: 'app.js'
         },
+        resolve: {
+            extensions: ['.ts', '.js']
+        },
 
+        module: {
+            rules: [
+                {test: /\.ts$/, loader: 'awesome-typescript-loader'}
+            ]
+        },
         plugins: [
             new HtmlWebpackPlugin({
                 template: __dirname + '/src/index.html',
@@ -17,7 +26,10 @@ module.exports = function () {
             }),
             new CopyWebpackPlugin([
                 { from: 'src/assets', to: 'assets'}
-            ])
+            ]),
+            new ScriptExtPlugin({
+                defaultAttribute: 'defer'
+            })
         ]
     };
 }
