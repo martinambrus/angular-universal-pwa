@@ -1,6 +1,5 @@
 const express = require('express');
 
-const port = 3000;
 const app = express();
 
 app.engine('html', require('ejs').renderFile);
@@ -11,10 +10,13 @@ app.set('views', 'dist');
 app.use('/', express.static('dist', { index: false }));
 
 app.get('/**', (req, res) => {
-    res.render('./index', {req, res});
+    var basePath;
+    if(req.headers['host'] && req.headers['host'].indexOf(".amazonaws.com") > -1)
+        basePath = '/production/';
+    else
+        basePath = '/';
+    res.render('./index', {req, res, basePath: basePath });
 });
 
 
-app.listen(port, () => {
-    console.log(`Listening on: http://localhost:${port}`);
-});
+module.exports=app;
