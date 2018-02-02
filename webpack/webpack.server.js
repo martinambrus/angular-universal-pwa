@@ -8,7 +8,8 @@ module.exports =  {
         entry: './src/main.server.ts',
         output: {
             libraryTarget: 'commonjs2',
-            filename: 'server.js'
+            filename: 'server.js',
+            publicPath: '/production/'
         },
         target: 'node'
     };
