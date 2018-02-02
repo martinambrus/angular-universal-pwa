@@ -29,13 +29,21 @@ app.set('views', 'dist');
 
 app.use('/', express.static('dist', { index: false }));
 
-app.get('/**', (req, res) => {
+// Server static files from /browser
+app.get('*.*', express.static('dist'));
+
+/*app.get('/!**', (req, res) => {
     if (req.headers.host.indexOf('angular-universal-pwa.maciejtreder.com') > -1 && req.headers.host !== 'www.angular-universal-pwa.maciejtreder.com') {
         res.writeHead (301, {Location: 'https://www.angular-universal-pwa.maciejtreder.com'});
         res.end();
         return;
     }
     res.render('index', {req, res});
+});*/
+
+// All regular routes use the Universal engine
+app.get('*', (req, res) => {
+    res.render('index', { req, res });
 });
 
 // redirection from safari notification to given external page
