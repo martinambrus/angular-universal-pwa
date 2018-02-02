@@ -10,3 +10,4 @@
 dll
 .awcache
 /src/styles/main.css
+*-lock.json
