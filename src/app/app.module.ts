@@ -13,7 +13,8 @@ import { Meta } from '@angular/platform-browser';
 
 const routes: any[] = [
     { path: '', component: HomeComponent, data: {title: 'Home', description: 'Home.'}},
-    { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule', data: {title: 'Lazy module', description: 'Lazy module example.'}}
+    { path: 'lazy', loadChildren: './lazy/lazy.module#LazyModule', data: {title: 'Lazy module', description: 'Lazy module example.'}},
+    { path: 'external', loadChildren: '@angular-universal-serverless/external-module/release#ExternalModule', data: {title: 'External module', description: 'External module example.'}}
 ];
 
 @NgModule({

@@ -33,6 +33,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@angular-universal-serverless/external-module": "git+https://github.com/martinambrus/angular-external-module.git",
     "@angular/animations": "^5.2.3",
     "@angular/cdk": "^5.1.1",
     "@angular/common": "^5.2.3",
